@@ -17,13 +17,10 @@
 
 
 
-#include <iostream>
 def processData(inputString):
     # This line of code prints the first line of output
     print("Hello, World.")
     print(inputString)
-    
-    # Write the second line of output that prints the contents of 'inputString' here.
 
 inputString = input()
 processData(inputString)

@@ -23,11 +23,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String inputString = scanner.nextLine();
-        // This line of code prints the first line of output
+        
         System.out.println("Hello, World.");
         System.out.println(inputString);
-        
-        // Write the second line of output that prints the contents of 'inputString' here.
     }
 }
 

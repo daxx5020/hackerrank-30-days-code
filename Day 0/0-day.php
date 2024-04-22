@@ -23,8 +23,6 @@ function processData($inputString) {
     // This line of code prints the first line of output
     echo "Hello, World.\n";
     echo $inputString . "\n";
-    
-    // Write the second line of output that prints the contents of 'inputString' here.
 }
 
 $inputString = readline();

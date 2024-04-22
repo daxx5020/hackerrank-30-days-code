@@ -24,6 +24,4 @@ void processData(string inputString) {
     // This line of code prints the first line of output
     cout << "Hello, World." << endl;
     cout << inputString << endl;
-    
-    // Write the second line of output that prints the contents of 'inputString' here.
 }
