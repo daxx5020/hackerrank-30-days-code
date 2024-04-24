@@ -9,7 +9,7 @@ Complete the code in the editor below. The variables i,d ,s and s are already de
         Concatenate s with the string you read as input and print the result on a new line. -->
 
 
-        <?php
+<?php
 // Declare variables
 $a = 0;
 $b = 0.0;

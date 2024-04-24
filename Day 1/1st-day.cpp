@@ -9,7 +9,7 @@ Complete the code in the editor below. The variables i,d ,s and s are already de
         Concatenate s with the string you read as input and print the result on a new line.
 */
 
- #include <iostream>
+#include <iostream>
 #include <iomanip>
 #include <limits>
 
@@ -21,20 +21,18 @@ int main() {
     string s = "HackerRank ";
      int a = 0;
     double b = 0.0;
-    char c[100]; // Assuming max length of input string is 100 characters
+    char c[100];
 
     // Read input
     scanf("%d", &a);
     scanf("%lf", &b);
-    std::cin.ignore(); // Ignore newline character left in the buffer
+    std::cin.ignore();
     std::cin.getline(c, 100);
 
-    // Perform operations
     int sum_int = a + i;
     double sum_double = b + d;
     std::string concat_string = s + c;
 
-    // Print output
     printf("%d\n", sum_int);
     printf("%.1lf\n", sum_double);
     std::cout << concat_string << std::endl;
