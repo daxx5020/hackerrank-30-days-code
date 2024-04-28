@@ -7,7 +7,7 @@ A = [1, 2, 3, 4)]
 Print 4 3 2 1. Each integer is separated by one space.
  -->
 
- <?php
+<?php
 
 $n = intval(trim(fgets(STDIN)));
 
@@ -15,7 +15,6 @@ $arr_temp = rtrim(fgets(STDIN));
 
 $arr = array_map('intval', preg_split('/ /', $arr_temp, -1, PREG_SPLIT_NO_EMPTY));
 
-// JavaScript code converted to PHP and integrated below
 for ($i = count($arr) - 1; $i >= 0; $i--) {
     echo $arr[$i] . " ";
 }

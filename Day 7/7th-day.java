@@ -30,7 +30,6 @@ public class Solution {
             .map(Integer::parseInt)
             .collect(toList());
 
-        // JavaScript code converted to Java and integrated below
         for (int i = arr.size() - 1; i >= 0; i--) {
             System.out.print(arr.get(i) + " ");
         }

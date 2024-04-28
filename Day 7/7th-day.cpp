@@ -34,7 +34,6 @@ int main() {
         arr[i] = arr_item;
     }
 
-    // JavaScript code converted to C++ and integrated below
     for (int i = arr.size() - 1; i >= 0; i--) {
         cout << arr[i] << " ";
     }

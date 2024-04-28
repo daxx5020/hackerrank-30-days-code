@@ -1,6 +1,5 @@
 <!-- 
 Task
-Task
 Write a Person class with an instance variable, age, and a constructor that takes an integer, initial Age, as a parameter. The
 constructor must assign initial Age to age after confirming the argument passed as initial Age is not negative: if a negative
 argument is passed as initial Age, the constructor should set age to 0 and print Age is not valid, setting age to 0.. In

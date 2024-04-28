@@ -16,7 +16,6 @@ if __name__ == '__main__':
     n = int(input().strip())
     arr = list(map(int, input().rstrip().split()))
 
-    # JavaScript code converted to Python and integrated below
     for i in range(len(arr) - 1, -1, -1):
         sys.stdout.write(str(arr[i]) + " ")
 

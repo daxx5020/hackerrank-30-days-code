@@ -37,9 +37,8 @@ function main() {
 
     const arr = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => parseInt(arrTemp, 10));
 
-    // Iterate through the array in reverse order
     for (let i = arr.length - 1; i >= 0; i--) {
     process.stdout.write(arr[i] + " ");
-}
+    }
 }
 
