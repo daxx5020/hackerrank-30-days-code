@@ -16,37 +16,57 @@ Note: If you fail to use recursion or fail to name your recursive function facto
 */
 
 
-function processData(input) {
-    
-    let array = input.split("\n")
-    n = parseInt(array[0]);
-    let phoneBook = new Map();
-    
-    for (let i=1; i<=n; i++){
-        let [name,phonenumber] = array[i].split(" ");
-        phoneBook.set(name,phonenumber);
-    }
-    
-    for (i = n+1; i<array.length; i++){
-        let name= array[i];
-        if(phoneBook.has(name)){
-            console.log(`${name}=${phoneBook.get(name)}`)
-        }
-    
-        else{
-            console.log("Not found");
-        }
-    }
-} 
+'use strict';
 
-    process.stdin.resume();
-    process.stdin.setEncoding("ascii");
-    _input = "";
-    process.stdin.on("data", function (input) {
-        _input += input;
-    });
-    
-    process.stdin.on("end", function () {
-       processData(_input);
-    });
+const fs = require('fs');
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputString = '';
+let currentLine = 0;
+
+process.stdin.on('data', function(inputStdin) {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', function() {
+    inputString = inputString.split('\n');
+
+    main();
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+
+/*
+ * Complete the 'factorial' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER n as parameter.
+ */
+
+function factorial(n) {
+    if (n === 0 || n ===1){
+        return 1;
+    }
+    else{
+        return n * factorial(n-1)
+    }
+
+}
+
+function main() {
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const n = parseInt(readLine().trim(), 10);
+
+    const result = factorial(n);
+
+    ws.write(result + '\n');
+
+    ws.end();
+}
+
     
