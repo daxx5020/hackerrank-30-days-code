@@ -6,7 +6,7 @@ your phone book on a new line in the form name=phoneNumber: if an entry for name
 Note: Your phone book should be a Dictionary/Map/HashMap data structure.
  -->
 
- <?php
+<?php
 $_fp = fopen("php://stdin", "r");
 
 // Read input from STDIN

@@ -1,9 +1,18 @@
 /*
-Task
-Given n names and phone numbers, assemble a phone book that maps friends' names to their respective phone numbers. You will
-then be given an unknown number of names to query your phone book for. For each name queried, print the associated entry from
-your phone book on a new line in the form name=phoneNumber: if an entry for name is not found, print Not found instead.
-Note: Your phone book should be a Dictionary/Map/HashMap data structure.
+Objective
+instructional video.
+Today, we are learning about an algorithmic concept called recursion.
+
+Recursive Method for Calculating Factorial
+
+Function Description
+Complete the factorial function in the editor below. Be sure to use recursion.
+factorial has the following paramter:
+• int n: an integer
+
+Returns
+• int: the factorial of n
+Note: If you fail to use recursion or fail to name your recursive function factorial or Factorial, you will get a score of 0.
 */
 
 
