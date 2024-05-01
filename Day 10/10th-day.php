@@ -7,7 +7,7 @@ n = 125|
 The binary representation of 12510 is 11111012. In base 10. there are 5 and 1 consecutive ones in two groups. Print the maximum, 5.
  -->
 
- <?php
+<?php
 
 function maxConsecutiveOnes($n) {
     $binary = decbin($n);
