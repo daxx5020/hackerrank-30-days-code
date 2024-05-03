@@ -17,53 +17,27 @@ Complete the Student class by writing the following:
 */
 
 
-'use strict';
-
-process.stdin.resume();
-process.stdin.setEncoding('utf-8');
-
-let inputString = '';
-let currentLine = 0;
-
-process.stdin.on('data', function(inputStdin) {
-    inputString += inputStdin;
-});
-
-process.stdin.on('end', function() {
-    inputString = inputString.split('\n');
-
-    main();
-});
-
-function readLine() {
-    return inputString[currentLine++];
-}
-
-
-
-function main() {
-
-    let arr = Array(6);
-
-    for (let i = 0; i < 6; i++) {
-        arr[i] = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => parseInt(arrTemp, 10));
+class Student extends Person {
+    constructor(firstName, lastName, identification, scores) {
+        super(firstName, lastName, identification);
+        this.scores = scores;
     }
-    
-    let rows = arr.length;
-    let cols = arr[0].length;
-    
-    let sum = 0;
-    let maxSum = Number.MIN_SAFE_INTEGER
-    
-    for (let i=0; i<rows-2;i++){
-        for (let j=0; j<rows-2;j++){
-            sum = arr[i][j] + arr[i][j+1] + arr[i][j+2] + arr[i+1][j+1] + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j+2]
-            
-            if (sum > maxSum){
-                maxSum = sum;
-            }
-        }    
+
+    calculate() {
+        const averageScore = this.scores.reduce((acc, score) => acc + score, 0) / this.scores.length;
+
+        if (averageScore >= 90) {
+            return "O";
+        } else if (averageScore >= 80) {
+            return "E";
+        } else if (averageScore >= 70) {
+            return "A";
+        } else if (averageScore >= 55) {
+            return "P";
+        } else if (averageScore >= 40) {
+            return "D";
+        } else {
+            return "T";
+        }
     }
-    
-    console.log(maxSum);
 }

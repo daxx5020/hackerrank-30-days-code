@@ -15,27 +15,23 @@
 # • A char calculate) method that calculates a Student object's average and returns the grade character representative of their calculated average:
 
 
-import sys
-
-arr = []
-
-for _ in range(6):
-    arr.append(list(map(int, input().rstrip().split())))
-
-rows = len(arr)
-cols = len(arr[0])
-
-max_sum = float('-inf')
-
-for i in range(rows - 2):
-    for j in range(cols - 2):
-        sum_val = (
-            arr[i][j] + arr[i][j + 1] + arr[i][j + 2] +
-            arr[i + 1][j + 1] +
-            arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2]
-        )
-
-        if sum_val > max_sum:
-            max_sum = sum_val
-
-print(max_sum)
+class Student(Person):
+    def __init__(self, firstName, lastName, idNumber, scores):
+        super().__init__(firstName, lastName, idNumber)
+        self.scores = scores
+    
+    def calculate(self):
+        average_score = sum(self.scores) / len(self.scores)
+        
+        if average_score >= 90:
+            return 'O'
+        elif average_score >= 80:
+            return 'E'
+        elif average_score >= 70:
+            return 'A'
+        elif average_score >= 55:
+            return 'P'
+        elif average_score >= 40:
+            return 'D'
+        else:
+            return 'T'

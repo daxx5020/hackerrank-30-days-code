@@ -18,46 +18,65 @@ Complete the Student class by writing the following:
 
 #include <iostream>
 #include <vector>
-#include <string>
-#include <algorithm>
-
+#include <numeric>
 using namespace std;
 
+class Person {
+protected:
+    string firstName;
+    string lastName;
+    int identification;
+public:
+    Person(string firstName, string lastName, int identification) {
+        this->firstName = firstName;
+        this->lastName = lastName;
+        this->identification = identification;
+    }
+    void printPerson() {
+        cout << "Name: " << lastName << ", " << firstName << "\nID: " << identification << "\n";
+    }
+};
+
+class Student : public Person {
+private:
+    vector<int> scores;
+public:
+    Student(string firstName, string lastName, int identification, vector<int> scores) : Person(firstName, lastName, identification), scores(scores) {}
+
+    char calculate() {
+        double averageScore = accumulate(scores.begin(), scores.end(), 0.0) / scores.size();
+
+        if (averageScore >= 90) {
+            return 'O';
+        } else if (averageScore >= 80) {
+            return 'E';
+        } else if (averageScore >= 70) {
+            return 'A';
+        } else if (averageScore >= 55) {
+            return 'P';
+        } else if (averageScore >= 40) {
+            return 'D';
+        } else {
+            return 'T';
+        }
+    }
+};
+
 int main() {
-    vector<vector<int>> arr(6);
-
-    for (int i = 0; i < 6; i++) {
-        arr[i].resize(6);
-
-        string arr_row_temp_temp;
-        getline(cin, arr_row_temp_temp);
-
-        size_t start = 0, end = 0;
-        for (int j = 0; j < 6; j++) {
-            end = arr_row_temp_temp.find(" ", start);
-            arr[i][j] = stoi(arr_row_temp_temp.substr(start, end - start));
-            start = end + 1;
-        }
+    string firstName;
+    string lastName;
+    int id;
+    int numScores;
+    cin >> firstName >> lastName >> id >> numScores;
+    vector<int> scores(numScores);
+    for (int i = 0; i < numScores; i++) {
+        cin >> scores[i];
     }
-
-    int rows = arr.size();
-    int cols = arr[0].size();
-
-    int maxSum = numeric_limits<int>::min();
-
-    for (int i = 0; i < rows - 2; i++) {
-        for (int j = 0; j < cols - 2; j++) {
-            int sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] +
-                      arr[i + 1][j + 1] +
-                      arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2];
-
-            maxSum = max(maxSum, sum);
-        }
-    }
-
-    cout << maxSum << endl;
-
+    Student* s = new Student(firstName, lastName, id, scores);
+    s->printPerson();
+    cout << "Grade: " << s->calculate() << "\n";
     return 0;
 }
+
 
 

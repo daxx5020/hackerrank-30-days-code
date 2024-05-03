@@ -17,49 +17,69 @@ Complete the Student class by writing the following:
 */
 
 
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
+import java.util.ArrayList;
 
-public class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+class Person {
+    protected String firstName;
+    protected String lastName;
+    protected int identification;
 
-        List<List<Integer>> arr = new ArrayList<>();
+    public Person(String firstName, String lastName, int identification) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.identification = identification;
+    }
 
-        for (int i = 0; i < 6; i++) {
-            String[] arrRowItems = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
-
-            List<Integer> arrRow = new ArrayList<>();
-
-            for (int j = 0; j < 6; j++) {
-                int arrItem = Integer.parseInt(arrRowItems[j]);
-                arrRow.add(arrItem);
-            }
-
-            arr.add(arrRow);
-        }
-
-        bufferedReader.close();
-
-        int rows = arr.size();
-        int cols = arr.get(0).size();
-
-        int maxSum = Integer.MIN_VALUE;
-
-        for (int i = 0; i < rows - 2; i++) {
-            for (int j = 0; j < cols - 2; j++) {
-                int sum =
-                    arr.get(i).get(j) + arr.get(i).get(j + 1) + arr.get(i).get(j + 2) +
-                    arr.get(i + 1).get(j + 1) +
-                    arr.get(i + 2).get(j) + arr.get(i + 2).get(j + 1) + arr.get(i + 2).get(j + 2);
-
-                if (sum > maxSum) {
-                    maxSum = sum;
-                }
-            }
-        }
-
-        System.out.println(maxSum);
+    public void printPerson() {
+        System.out.println("Name: " + lastName + ", " + firstName + "\nID: " + identification);
     }
 }
+
+class Student extends Person {
+    private ArrayList<Integer> scores;
+
+    public Student(String firstName, String lastName, int identification, ArrayList<Integer> scores) {
+        super(firstName, lastName, identification);
+        this.scores = scores;
+    }
+
+    public char calculate() {
+        double averageScore = scores.stream().mapToDouble(Integer::doubleValue).average().orElse(0.0);
+
+        if (averageScore >= 90) {
+            return 'O';
+        } else if (averageScore >= 80) {
+            return 'E';
+        } else if (averageScore >= 70) {
+            return 'A';
+        } else if (averageScore >= 55) {
+            return 'P';
+        } else if (averageScore >= 40) {
+            return 'D';
+        } else {
+            return 'T';
+        }
+    }
+}
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String firstName = scanner.next();
+        String lastName = scanner.next();
+        int id = scanner.nextInt();
+        int numScores = scanner.nextInt();
+        ArrayList<Integer> scores = new ArrayList<>();
+        for (int i = 0; i < numScores; i++) {
+            scores.add(scanner.nextInt());
+        }
+        Student s = new Student(firstName, lastName, id, scores);
+        s.printPerson();
+        System.out.println("Grade: " + s.calculate());
+        scanner.close();
+    }
+}
+
 
