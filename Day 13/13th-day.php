@@ -15,3 +15,20 @@ Given a Book class and a Solution class, write a MyBook class that does the foll
 Note: Because these classes are being written in the same file, you must not use an access modifier (e.g.: publie) when declaring MyBook or your code will not execute.
  -->
 
+
+<?php
+
+class MyBook extends Book {
+    private $price;
+    
+    function __construct($t, $a, $p) {
+        parent::__construct($t, $a);
+        $this->price = $p;
+    }
+    
+    public function display() {
+        echo "Title: " . $this->title;
+        echo "Author: " . $this->author;
+        echo "Price: " . $this->price;
+    }
+}

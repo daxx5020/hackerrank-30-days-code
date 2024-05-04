@@ -14,3 +14,12 @@
 # Note: Because these classes are being written in the same file, you must not use an access modifier (e.g.: publie) when declaring MyBook or your code will not execute.
 
 
+class MyBook(Book):
+    def __init__(self, title, author, price):
+        super().__init__(title, author)
+        self.price = price
+
+    def display(self):
+        print("Title:", self.title)
+        print("Author:", self.author)
+        print("Price:", self.price)

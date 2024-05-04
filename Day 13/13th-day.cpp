@@ -15,3 +15,46 @@ Given a Book class and a Solution class, write a MyBook class that does the foll
 Note: Because these classes are being written in the same file, you must not use an access modifier (e.g.: publie) when declaring MyBook or your code will not execute.
 */
 
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Book {
+protected:
+    string title;
+    string author;
+public:
+    Book(string t, string a) : title(t), author(a) {}
+    
+    virtual void display() = 0;
+};
+
+class MyBook : public Book {
+private:
+    int price;
+public:
+    MyBook(string t, string a, int p) : Book(t, a), price(p) {}
+
+    void display() override {
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Price: " << price << endl;
+    }
+};
+
+int main() {
+    string title, author;
+    int price;
+
+    getline(cin, title);
+    getline(cin, author);
+    cin >> price;
+    cin.ignore();
+
+    MyBook book(title, author, price);
+    book.display();
+
+    return 0;
+}
