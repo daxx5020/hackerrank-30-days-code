@@ -16,7 +16,7 @@ Return a reference to the head node of the linked list.
  -->
 
 
- <?php
+<?php
 function insert($head, $data) {
     $newNode = new Node($data);
     if ($head == null) {

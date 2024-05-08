@@ -27,7 +27,7 @@ Note: Be sure to use precise values for your calculations, or you may end up wit
  *  3. INTEGER tax_percent
  */
 
- function solve($meal_cost, $tip_percent, $tax_percent) {
+function solve($meal_cost, $tip_percent, $tax_percent) {
     $tip_cost = round(($meal_cost * $tip_percent) / 100 + ($meal_cost * $tax_percent) / 100 + $meal_cost);
      echo $tip_cost . "\n";
  

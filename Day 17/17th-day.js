@@ -16,6 +16,5 @@ class Calculator{
         else{
             throw "n and p should be non-negative";
         }
-
     }
 } 

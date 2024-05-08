@@ -7,6 +7,7 @@ Note: Do not use an access modifier (e.g.: public) in the declaration for your C
 
 
 <?php
+
 class Calculator {
     function power($n, $p) {
         if ($n >= 0 && $p >= 0) {

@@ -21,4 +21,5 @@ if ($N % 2 !== 0) {
 } elseif ($N % 2 === 0 && $N > 20) {
     echo "Not Weird\n";
 }
+
 ?>
