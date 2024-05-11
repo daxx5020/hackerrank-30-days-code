@@ -5,7 +5,7 @@ Given an integer, n. print its first 10 multiples. Each multiple n x i (where 1 
  -->
 
 
- <?php
+<?php
 $n = intval(trim(fgets(STDIN)));
 
 printMultiplicationTable($n);
