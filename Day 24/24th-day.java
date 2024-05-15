@@ -1,94 +1,76 @@
 /*
 Task
-A level-order traversal, also known as a breadth-first search, visits each level of a tree's nodes from left to right, top to bottom. You are given a pointer, root, pointing to the root of a binary search tree. Complete the levelOrder function provided in your editor so that it prints the level-order traversal of the binary search tree.
+A Node class is provided for you in the editor. A Node object has an integer data field, data, and a Node instance pointer, neat. pointing to another node (i.e.: the next node in a list). A removeDuplicates function is declared in your editor, which takes a pointer to the head node of a linked list as a parameter. Complete removeDuplicates so that it deletes any duplicate nodes from the list and returns the head of the updated list.
 
-Hint: You'll find a queue helpful in completing this challenge.
-
-Function Description
-Complete the levelOrder function in the editor below. levelOrder has the following parameter:
-- Node pointer root: a reference to the root of the tree
-
-Prints
-- Print node.data items as space-separated line of integers. No return value is expected.
+Note: The head pointer may be null, indicating that the list is empty. Be sure to reset your neat pointer when performing deletions to avoid breaking the list.
 */
 
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 class Node {
     int data;
-    Node left, right;
+    Node next;
 
-    public Node(int data) {
+    Node(int data) {
         this.data = data;
-        left = right = null;
+        this.next = null;
     }
 }
 
-class BinarySearchTree {
-    Node root;
+class Solution {
+    public Node removeDuplicates(Node head) {
+        Node prev = head;
 
-    // Function to insert a new node into the BST
-    Node insert(Node root, int data) {
-        if (root == null) {
-            root = new Node(data);
-            return root;
+        while (prev != null) {
+            Node next = prev.next;
+
+            if (next != null && prev.data == next.data) {
+                prev.next = next.next;
+            } else {
+                prev = prev.next;
+            }
         }
 
-        if (data <= root.data) {
-            if (root.left != null)
-                insert(root.left, data);
-            else
-                root.left = new Node(data);
+        return head;
+    }
+
+    public Node insert(Node head, int data) {
+        Node p = new Node(data);
+        if (head == null) {
+            head = p;
+        } else if (head.next == null) {
+            head.next = p;
         } else {
-            if (root.right != null)
-                insert(root.right, data);
-            else
-                root.right = new Node(data);
+            Node start = head;
+            while (start.next != null) {
+                start = start.next;
+            }
+            start.next = p;
         }
-
-        return root;
+        return head;
     }
 
-    // Function to perform level order traversal
-    void levelOrder(Node root) {
-        if (root == null) return;
-
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
-
-        while (!queue.isEmpty()) {
-            Node node = queue.poll();
-            System.out.print(node.data + " ");
-
-            if (node.left != null)
-                queue.add(node.left);
-            if (node.right != null)
-                queue.add(node.right);
+    public void display(Node head) {
+        Node start = head;
+        while (start != null) {
+            System.out.print(start.data + " ");
+            start = start.next;
         }
     }
-}
 
-public class Solution {
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Solution mylist = new Solution();
+        Node head = null;
         Scanner scanner = new Scanner(System.in);
-        BinarySearchTree tree = new BinarySearchTree();
-        tree.root = null;
-
-        int n = scanner.nextInt();
-        for (int i = 0; i < n; i++) {
+        int T = scanner.nextInt();
+        for (int i = 0; i < T; i++) {
             int data = scanner.nextInt();
-            tree.root = tree.insert(tree.root, data);
+            head = mylist.insert(head, data);
         }
-
-        // Perform level order traversal and print the result
-        tree.levelOrder(tree.root);
+        head = mylist.removeDuplicates(head);
+        mylist.display(head);
         scanner.close();
     }
 }
-
-
-

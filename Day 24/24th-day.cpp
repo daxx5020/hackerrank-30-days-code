@@ -1,94 +1,76 @@
 /*
 Task
-A level-order traversal, also known as a breadth-first search, visits each level of a tree's nodes from left to right, top to bottom. You are given a pointer, root, pointing to the root of a binary search tree. Complete the levelOrder function provided in your editor so that it prints the level-order traversal of the binary search tree.
+A Node class is provided for you in the editor. A Node object has an integer data field, data, and a Node instance pointer, neat. pointing to another node (i.e.: the next node in a list). A removeDuplicates function is declared in your editor, which takes a pointer to the head node of a linked list as a parameter. Complete removeDuplicates so that it deletes any duplicate nodes from the list and returns the head of the updated list.
 
-Hint: You'll find a queue helpful in completing this challenge.
-
-Function Description
-Complete the levelOrder function in the editor below. levelOrder has the following parameter:
-- Node pointer root: a reference to the root of the tree
-
-Prints
-- Print node.data items as space-separated line of integers. No return value is expected.
+Note: The head pointer may be null, indicating that the list is empty. Be sure to reset your neat pointer when performing deletions to avoid breaking the list.
 */
 
 
 #include <iostream>
-#include <queue>
 using namespace std;
 
-// Node class definition
-class Node {
-public:
+struct Node {
     int data;
-    Node *left, *right;
-    Node(int data) {
-        this->data = data;
-        left = right = nullptr;
-    }
+    Node* next;
+    Node(int data) : data(data), next(nullptr) {}
 };
 
-// BinarySearchTree class definition
-class BinarySearchTree {
+class Solution {
 public:
-    Node *root;
-
-    // Function to insert a new node into the BST
-    Node* insert(Node* root, int data) {
-        if (root == nullptr) {
-            root = new Node(data);
-            return root;
-        }
-
-        if (data <= root->data) {
-            if (root->left)
-                insert(root->left, data);
-            else
-                root->left = new Node(data);
-        } else {
-            if (root->right)
-                insert(root->right, data);
-            else
-                root->right = new Node(data);
-        }
-
-        return root;
+    Node* removeDuplicates(Node* head) {
+        Node* prev = head;
+        
+        while (prev) {
+            Node* next = prev->next;
+            
+            if (next && prev->data == next->data) {
+                prev->next = next->next;
+                delete next;
+            } else {
+                prev = prev->next;
+            }
+        }     
+ 
+        return head;
     }
 
-    // Function to perform level order traversal
-    void levelOrder(Node* root) {
-        if (root == nullptr) return;
+    Node* insert(Node* head, int data) {
+        Node* p = new Node(data);
+        if (head == nullptr) {
+            head = p;
+        } else if (head->next == nullptr) {
+            head->next = p;
+        } else {
+            Node* start = head;
+            while (start->next != nullptr) {
+                start = start->next;
+            }
+            start->next = p;
+        }
+        return head;
+    }
 
-        queue<Node*> q;
-        q.push(root);
-
-        while (!q.empty()) {
-            Node* node = q.front();
-            q.pop();
-            cout << node->data << " ";
-
-            if (node->left)
-                q.push(node->left);
-            if (node->right)
-                q.push(node->right);
+    void display(Node* head) {
+        Node* start = head;
+        while (start) {
+            cout << start->data << " ";
+            start = start->next;
         }
     }
 };
 
 int main() {
-    BinarySearchTree tree;
-    tree.root = nullptr;
-
-    // Read input from STDIN
-    int n, data;
-    cin >> n;
-    for (int i = 0; i < n; ++i) {
+    Solution mylist;
+    Node* head = nullptr;
+    int T;
+    cin >> T;
+    for (int i = 0; i < T; i++) {
+        int data;
         cin >> data;
-        tree.root = tree.insert(tree.root, data);
+        head = mylist.insert(head, data);
     }
-
-    // Perform level order traversal and print the result
-    tree.levelOrder(tree.root);
+    head = mylist.removeDuplicates(head);
+    mylist.display(head);
     return 0;
 }
 
