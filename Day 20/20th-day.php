@@ -16,6 +16,7 @@ Hint: To complete this challenge, you will need to add a variable that keeps a r
 
 
 <?php
+
 $n = intval(trim(fgets(STDIN)));
 
 $a_temp = rtrim(fgets(STDIN));

@@ -17,7 +17,6 @@ Prints
 #include <queue>
 using namespace std;
 
-// Node class definition
 class Node {
 public:
     int data;
@@ -28,12 +27,10 @@ public:
     }
 };
 
-// BinarySearchTree class definition
 class BinarySearchTree {
 public:
     Node *root;
 
-    // Function to insert a new node into the BST
     Node* insert(Node* root, int data) {
         if (root == nullptr) {
             root = new Node(data);
@@ -55,7 +52,6 @@ public:
         return root;
     }
 
-    // Function to perform level order traversal
     void levelOrder(Node* root) {
         if (root == nullptr) return;
 
@@ -79,7 +75,6 @@ int main() {
     BinarySearchTree tree;
     tree.root = nullptr;
 
-    // Read input from STDIN
     int n, data;
     cin >> n;
     for (int i = 0; i < n; ++i) {
@@ -87,7 +82,6 @@ int main() {
         tree.root = tree.insert(tree.root, data);
     }
 
-    // Perform level order traversal and print the result
     tree.levelOrder(tree.root);
     return 0;
 }

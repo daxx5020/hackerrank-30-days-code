@@ -5,6 +5,8 @@
 # 2. If the book is returned after the expected return day but still within the same calendar month anc year as the expected return date, fine = 15 Hackos × (the number of days late).
 # 3. If the book is returned after the expected return month but still within the same calendar year as the expected return date, the fine = 500 Hackos × (the number of months late).
 # 4. If the book is returned after the calendar year in which it was expected, there is a fixed fine of 10000 Hackos.
+
+
 import sys
 
 def calculate_fine(d1, m1, y1, d2, m2, y2):

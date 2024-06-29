@@ -9,7 +9,8 @@ Your local library needs your help! Given the expected and actual return dates f
  -->
 
 
- <?php
+<?php
+
 $_fp = fopen("php://stdin", "r");
 
 $line1 = fgets($_fp);
@@ -36,4 +37,5 @@ function calculateFine($d1, $m1, $y1, $d2, $m2, $y2) {
 $fine = calculateFine($d1, $m1, $y1, $d2, $m2, $y2);
 
 echo $fine . "\n";
+
 ?>

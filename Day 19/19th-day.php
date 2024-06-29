@@ -7,6 +7,7 @@ Complete the implementation of Calculator class, which implements the AdvancedAr
 
 
 <?php
+
 class Calculator implements AdvancedArithmetic {
     function divisorSum($n) {
         $total = 0;

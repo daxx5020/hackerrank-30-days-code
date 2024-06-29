@@ -30,7 +30,6 @@ class Node {
 class BinarySearchTree {
     Node root;
 
-    // Function to insert a new node into the BST
     Node insert(Node root, int data) {
         if (root == null) {
             root = new Node(data);
@@ -52,7 +51,6 @@ class BinarySearchTree {
         return root;
     }
 
-    // Function to perform level order traversal
     void levelOrder(Node root) {
         if (root == null) return;
 
@@ -73,7 +71,6 @@ class BinarySearchTree {
 
 public class Solution {
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner scanner = new Scanner(System.in);
         BinarySearchTree tree = new BinarySearchTree();
         tree.root = null;
@@ -84,7 +81,6 @@ public class Solution {
             tree.root = tree.insert(tree.root, data);
         }
 
-        // Perform level order traversal and print the result
         tree.levelOrder(tree.root);
         scanner.close();
     }

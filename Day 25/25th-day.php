@@ -7,6 +7,7 @@ Note: If possible, try to come up with a O(Vn) primality algorithm, or see what 
 
 
 <?php
+
 function isPrime($n) {
     if ($n <= 1) {
         return false;

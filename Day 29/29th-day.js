@@ -26,5 +26,4 @@ function bitwiseAnd(N, K) {
         }
     }
     return final;
-
 }

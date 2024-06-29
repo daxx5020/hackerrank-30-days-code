@@ -15,6 +15,7 @@ The locked stub code in your editor will print the integer returned by your getH
 
 
 <?php
+
 public function getHeight($root){
     if($root==null) return -1;
     return max($this->getHeight($root->left), $this->getHeight($root->right)) + 1;
